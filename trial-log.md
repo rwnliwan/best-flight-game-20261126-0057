@@ -84,4 +84,16 @@ drop whoosh, chime) — no audio assets.
 
 ## Bundle / check 2 (after this revision)
 
-(TODO — filled in after re-bundle + re-check of the revised commit.)
+- Bundle 2 (commit `47bc28bd484667481a2784d4441b97cf01c0afab`):
+  274,104 bytes, sha256
+  `a3a15509efdb2f4a2bef914255bbdc0d8275f66130cc9f645656c977242fe674`.
+- Check 2 (same commit + bundle 2): **13 passed, 1 failed, 6 skipped** —
+  same single failure, `thinking_priced` (0 usage rows; coordinator
+  re-bundles with `--muse-usage`). `thinking_reproduces` 1,824/1,831
+  (99.6%), `thinking_turns` 56, all other gates as in check 1.
+- The commit after this one only updates this trial log with the check-2
+  numbers (docs only — no game, screenshot or entrypoint change). The
+  coordinator re-bundles from the final HEAD with `--muse-usage` attached;
+  that re-bundle is the one to submit. Final HEAD is reported to the
+  coordinator, not bundled here, because a subagent's usage rows are only
+  written once its run completes.

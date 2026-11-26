@@ -58,5 +58,30 @@ drop whoosh, chime) — no audio assets.
 
 ## Bundle / check
 
-(TODO — filled in after the first bundle + check run; this file is revised
-with the real numbers, then re-committed, re-bundled and re-checked.)
+- Bundle 1 (commit `eb24fa1b5b9f14938d2252390c5bee6356f03214`):
+  `best-flight-game-20261126-0057-bundle.tar.gz`, 267,971 bytes,
+  sha256 `bce87ea245cabaa07df56b19a8dbe08b2651a9df5fbbb53074a92a4b7be8fde9`.
+  1 session (muse-app, 67 turns, 285 lines), 3 instruction files, run record
+  with the prompt file and no MCP servers.
+- Check 1 (same commit + bundle 1): **13 passed, 1 failed, 6 skipped**,
+  5 checked at submission. The only failure is `thinking_priced` — 0 usage
+  rows: a subagent's usage rows are written only once its run completes, so
+  the coordinator re-bundles with `--muse-usage` (per the check's own fix
+  text). Notable passes: `thinking_reproduces` 1,801/1,808 counted lines
+  authored (99.6%, entrypoint main.ts 10 authored lines),
+  `thinking_revised` (game.js from 5 write/edit messages),
+  `thinking_in_window` (all 176 timestamps inside the window),
+  `thinking_turns` (53), `thinking_own_work` (0 lines from other entries),
+  `license_osi` (MIT), `snapshot` (22 files, 498,436 bytes).
+  Kit verified: bundle_sha256
+  `fe8924057c8c69b515045243e023057d2d21d874b17b7fa23fe6580aa75f64ba` matches
+  the live API value; kit format `agent-fun/kit/v1`, phase dev.
+- Local dossier run: `MAKEFUN_OUTPUT_DIR=out node main.ts` → dossier.json
+  557,097 bytes, text 69,739 bytes (cap 163,840), 11 source files, 0 vendored,
+  4 images, cover first.
+- This file was then revised with the real numbers above, re-committed,
+  re-bundled and re-checked (bundle 2 / check 2 below).
+
+## Bundle / check 2 (after this revision)
+
+(TODO — filled in after re-bundle + re-check of the revised commit.)

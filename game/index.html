@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TIRTA API — Wildfire Air Tanker</title>
+<meta name="description" content="TIRTA API: a wildfire air tanker flight game. Scoop lake water, douse forest fires, land back on the runway. Keyboard and mouse, no network needed.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="game" width="1280" height="720"></canvas>
+
+  <div id="menu" class="overlay">
+    <div class="card">
+      <h1>TIRTA API</h1>
+      <p class="tag">Wildfire Air Tanker</p>
+      <p class="brief">Three fires are burning in the valley. Take off from the strip,
+      skim the lake low and slow to fill the belly tank, drop the water on the
+      flames, then bring her home and land. Watch your fuel — the valley is
+      wide and the fires do not wait.</p>
+      <div class="buttons">
+        <button id="btn-start" class="primary">Start mission — Enter</button>
+        <button id="btn-help">How to fly</button>
+      </div>
+      <p id="best-score" class="best"></p>
+      <p class="foot">Keyboard + mouse &nbsp;•&nbsp; original game, art and sound &nbsp;•&nbsp; runs offline</p>
+    </div>
+  </div>
+
+  <div id="help" class="overlay hidden">
+    <div class="card">
+      <h2>How to fly</h2>
+      <table class="keys">
+        <tr><td><b>↑ / W</b></td><td>Climb (pitch up)</td><td><b>↓ / S</b></td><td>Descend (pitch down)</td></tr>
+        <tr><td><b>← → / A D</b></td><td>Bank and turn</td><td><b>Shift / E</b></td><td>More throttle</td></tr>
+        <tr><td><b>Ctrl / Q</b></td><td>Less throttle</td><td><b>Space</b></td><td>Drop water</td></tr>
+        <tr><td><b>Mouse hold</b></td><td>Steer toward the pointer</td><td><b>A</b></td><td>Autopilot assist</td></tr>
+        <tr><td><b>P</b></td><td>Pause</td><td><b>M</b></td><td>Mute</td></tr>
+        <tr><td><b>R</b></td><td>Restart mission</td><td><b>Enter</b></td><td>Start / fly again</td></tr>
+      </table>
+      <h3>The sortie</h3>
+      <ol>
+        <li><b>Take off:</b> full throttle on the runway, pull up past 30 m/s.</li>
+        <li><b>Scoop:</b> fly 2–9 m over the lake at 25–50 m/s — the tank fills, spray flies. Touch the water and you ditch.</li>
+        <li><b>Drop:</b> the amber reticle ahead marks where the water will land. Open the doors over a fire and watch it shrink.</li>
+        <li><b>Land:</b> all fires out, line up on the runway, gentle descent, roll to a stop. Stopped on the strip, fuel refills.</li>
+      </ol>
+      <p>Below 24 m/s the wing stalls and she sinks. Fuel empty means a glide — pick your field, or better, your runway.</p>
+      <div class="buttons">
+        <button id="btn-help-close" class="primary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="debrief" class="overlay hidden">
+    <div class="card">
+      <h2>Mission complete</h2>
+      <p class="tag">All fires out — wheels down on the runway</p>
+      <p id="debrief-stats" class="stats"></p>
+      <div class="buttons">
+        <button id="btn-again" class="primary">Fly again — Enter</button>
+        <button id="btn-menu">Main menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="crash" class="overlay hidden">
+    <div class="card">
+      <h2>Down in the valley</h2>
+      <p id="crash-reason" class="tag"></p>
+      <p id="crash-stats" class="stats"></p>
+      <div class="buttons">
+        <button id="btn-retry" class="primary">Try again — Enter</button>
+        <button id="btn-menu-2">Main menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="pause" class="overlay hidden">
+    <div class="card">
+      <h2>Paused</h2>
+      <p class="tag">The valley waits. The fires do not — much.</p>
+      <div class="buttons">
+        <button id="btn-resume" class="primary">Resume — P</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module" src="src/game.js"></script>
+</body>
+</html>
